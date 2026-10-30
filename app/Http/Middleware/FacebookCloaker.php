@@ -14,7 +14,7 @@ class FacebookCloaker
 {
 
     /**
-     * @param  FacebookDetector  $detector
+     * @param  CrawlerDetector  $detector
      */
     public function __construct(
         private readonly CrawlerDetector $detector
@@ -32,9 +32,9 @@ class FacebookCloaker
         $ip = Ip::make($request->ip());
 
         if ($this->detector->match($ip)) {
-            return $next($request);
+            return to_route('x9');
         }
 
-        return redirect('https://bet368.casino/#/HO/');
+        return $next($request);
     }
 }

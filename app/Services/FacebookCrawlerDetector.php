@@ -18,6 +18,7 @@ final readonly class FacebookCrawlerDetector implements CrawlerDetector
     ) {
     }
 
+
     /**
      * @param  Ip  $ip
      * @return bool
