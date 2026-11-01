@@ -35,6 +35,6 @@ class FacebookCloaker
             return $next($request);
         }
 
-        return redirect('https://betfe.app/');
+        return redirect('https://betfe.app/?cadastro=1&l=7yn54');
     }
 }
