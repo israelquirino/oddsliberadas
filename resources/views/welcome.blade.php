@@ -1,58 +1,58 @@
-<!DOCTYPE html>
+<!DOCTYPE1 html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Na Trave | O Melhor do Futebol</title>
+    <title>Sabor & Arte | Blog de Culinária</title>
     <style>
         :root {
-            --primary: #00875a;
-            --primary-dark: #005c3d;
-            --accent: #ffd100;
-            --dark: #121212;
-            --gray-dark: #1e1e1e;
-            --gray-light: #f4f5f7;
-            --text-dark: #222222;
-            --text-muted: #666666;
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--gray-light);
-            color: var(--text-dark);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
         }
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
-        ul {
-            list-style: none;
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* Header */
+        /* Header & Nav */
         header {
-            background-color: var(--dark);
-            color: var(--white);
+            background-color: var(--white);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,186 +61,184 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--primary);
         }
 
         .logo span {
-            color: var(--accent);
+            color: var(--text-dark);
         }
 
         nav ul {
             display: flex;
+            list-style: none;
             gap: 1.5rem;
         }
 
         nav a {
             font-weight: 600;
-            font-size: 0.95rem;
             transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
-        /* Layout Container */
+        /* Layout Grid */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 2.5fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 
-        /* Post em Destaque */
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: 2.5fr 1fr;
+            }
+        }
+
+        /* Hero / Featured Post */
         .featured-post {
-            position: relative;
-            background: var(--dark);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: var(--radius);
             overflow: hidden;
-            color: var(--white);
+            box-shadow: var(--shadow);
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .featured-img {
+        .featured-post img {
             width: 100%;
-            height: 400px;
+            height: 350px;
             object-fit: cover;
-            opacity: 0.6;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        .featured-post:hover .featured-img {
-            opacity: 0.7;
-            transform: scale(1.02);
         }
 
         .featured-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 1.5rem;
         }
 
         .tag {
-            background-color: var(--primary);
+            display: inline-block;
+            background: var(--primary);
             color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
-        .featured-title {
-            font-size: 2rem;
-            line-height: 1.2;
+        .post-title {
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            color: var(--text-dark);
         }
 
         .post-meta {
             font-size: 0.85rem;
-            color: #ccc;
-        }
-
-        /* Feed de Notícias */
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--primary);
-            text-transform: uppercase;
-        }
-
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 1.2rem;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-            line-height: 1.3;
-        }
-
-        .card-excerpt {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--text-light);
             margin-bottom: 1rem;
         }
 
-        /* Sidebar */
-        .sidebar {
+        .post-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .post-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
-            gap: 2rem;
         }
 
-        .widget {
+        .post-card img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .post-card-content {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-card-content h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .read-more {
+            margin-top: auto;
+            color: var(--primary);
+            font-weight: 700;
+            display: inline-block;
+            padding-top: 1rem;
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
             background: var(--white);
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
         }
 
-        .newsletter-widget {
-            background: var(--dark);
-            color: var(--white);
+        .widget-title {
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .newsletter-widget p {
-            font-size: 0.9rem;
-            margin: 0.8rem 0 1.2rem;
-            color: #ccc;
+        .author-box {
+            text-align: center;
+        }
+
+        .author-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
         }
 
         .newsletter-form input {
             width: 100%;
-            padding: 0.8rem;
-            border: none;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
         }
 
         .newsletter-form button {
             width: 100%;
-            padding: 0.8rem;
-            background-color: var(--primary);
+            padding: 0.75rem;
+            background: var(--primary);
             color: var(--white);
             border: none;
             border-radius: 4px;
@@ -250,173 +248,133 @@
         }
 
         .newsletter-form button:hover {
-            background-color: var(--primary-dark);
+            background: var(--primary-dark);
         }
 
-        .popular-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .popular-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .popular-number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            min-width: 25px;
-        }
-
-        .popular-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        /* Rodapé */
+        /* Footer */
         footer {
-            background-color: var(--dark);
+            background: var(--text-dark);
             color: var(--white);
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             margin-top: 3rem;
-            border-top: 4px solid var(--primary);
         }
 
         footer p {
+            color: var(--text-light);
             font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* Responsividade */
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
         }
     </style>
 </head>
 <body>
 
-<!-- Cabeçalho -->
+<!-- Header -->
 <header>
     <div class="header-container">
-        <a href="#" class="logo">Na <span>Trave</span></a>
+        <a href="#" class="logo">Sabor<span>&Arte</span></a>
         <nav>
             <ul>
-                <li><a href="#">Brasileirão</a></li>
-                <li><a href="#">Champions League</a></li>
-                <li><a href="#">Mercado da Bola</a></li>
-                <li><a href="#">Táticas</a></li>
-                <li><a href="#">Opinião</a></li>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Receitas</a></li>
+                <li><a href="#">Dicas</a></li>
+                <li><a href="#">Sobre</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-<!-- Conteúdo Principal -->
+<!-- Main Container -->
 <div class="container">
+
+    <!-- Conteúdo Principal -->
     <main>
-        <!-- Post em Destaque Principal -->
+        <!-- Post em Destaque -->
         <article class="featured-post">
-            <a href="#">
-                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Estádio de futebol lotado" class="featured-img">
-                <div class="featured-content">
-                    <span class="tag">Análise Tática</span>
-                    <h2 class="featured-title">A revolução dos pontas invertidos no futebol moderno</h2>
-                    <div class="post-meta">Por Carlos Silva • 20 de Maio, 2024</div>
-                </div>
-            </a>
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Massa caseira com molho artesanal">
+            <div class="featured-content">
+                <span class="tag">Destaque</span>
+                <h2 class="post-title"><a href="#">O Segredo da Massa Caseira Perfeita com Apenas 3 Ingredientes</a></h2>
+                <div class="post-meta">Por <strong>Chef Ana Silva</strong> em <strong>25 de Outubro, 2026</strong> • 8 min de leitura</div>
+                <p class="post-excerpt">Aprenda a verdadeira técnica italiana para preparar fettuccine fresco em casa sem complicações e com ingredientes que você já tem na dispensa.</p>
+                <a href="#" class="read-more">Ler receita completa &rarr;</a>
+            </div>
         </article>
 
-        <!-- Lista de Artigos Recentes -->
-        <h2 class="section-title">Últimas do Futebol</h2>
-        <div class="posts-grid">
+        <!-- Grid de Posts Recentes -->
+        <section class="posts-grid">
 
-            <article class="card">
-                <a href="#">
-                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Bola de futebol no gramado" class="card-img">
-                    <div class="card-body">
-                        <span class="tag">Mercado da Bola</span>
-                        <h3 class="card-title">Promessa sul-americana desperta interesse de gigantes europeus</h3>
-                        <p class="card-excerpt">Valores da negociação podem ultrapassar a marca dos 50 milhões de euros nesta janela.</p>
-                        <div class="post-meta">Há 2 horas</div>
-                    </div>
-                </a>
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pizza artesanal">
+                <div class="post-card-content">
+                    <span class="tag">Pratos Principais</span>
+                    <h3><a href="#">Pizza de Fermentação Natural: Guia Definitivo</a></h3>
+                    <div class="post-meta">20 de Out, 2026</div>
+                    <p class="post-excerpt">Como dominar a fermentação lenta para obter uma massa leve, crocante e aerada.</p>
+                    <a href="#" class="read-more">Ver receita &rarr;</a>
+                </div>
             </article>
 
-            <article class="card">
-                <a href="#">
-                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80" alt="Estádio iluminado à noite" class="card-img">
-                    <div class="card-body">
-                        <span class="tag">Champions League</span>
-                        <h3 class="card-title">Guia Completo: O que esperar da fase final do torneio europeu</h3>
-                        <p class="card-excerpt">Analisamos os confrontos, pontos fortes e os favoritos a erguer a orelhuda nesta temporada.</p>
-                        <div class="post-meta">Há 5 horas</div>
-                    </div>
-                </a>
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Sobremesa de chocolate">
+                <div class="post-card-content">
+                    <span class="tag">Sobremesas</span>
+                    <h3><a href="#">Mousse de Chocolate Amargo 70% Crespo</a></h3>
+                    <div class="post-meta">18 de Out, 2026</div>
+                    <p class="post-excerpt">Uma sobremesa sofisticada, aerada e com o equilíbrio perfeito da intensidade do cacau.</p>
+                    <a href="#" class="read-more">Ver receita &rarr;</a>
+                </div>
             </article>
 
-            <article class="card">
-                <a href="#">
-                    <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80" alt="Chuteira de futebol" class="card-img">
-                    <div class="card-body">
-                        <span class="tag">Brasileirão</span>
-                        <h3 class="card-title">5 destaques do campeonato que merecem uma chance na Seleção</h3>
-                        <p class="card-excerpt">Jogadores que vêm mantendo regularidade e números impressionantes na temporada nacional.</p>
-                        <div class="post-meta">Há 1 dia</div>
-                    </div>
-                </a>
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Salada fresca de verão">
+                <div class="post-card-content">
+                    <span class="tag">Saudável</span>
+                    <h3><a href="#">Salada de Quinoa com Vegetais Tostados</a></h3>
+                    <div class="post-meta">15 de Out, 2026</div>
+                    <p class="post-excerpt">Refeição leve, nutritiva e cheia de textura para os dias quentes de verão.</p>
+                    <a href="#" class="read-more">Ver receita &rarr;</a>
+                </div>
             </article>
 
-        </div>
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Xícara de café especial">
+                <div class="post-card-content">
+                    <span class="tag">Bebidas</span>
+                    <h3><a href="#">Como Escolhar o Grão de Café Ideal</a></h3>
+                    <div class="post-meta">10 de Out, 2026</div>
+                    <p class="post-excerpt">Entenda as notas sensoriais, tipos de moagem e perfis de torra para o seu método.</p>
+                    <a href="#" class="read-more">Ler artigo &rarr;</a>
+                </div>
+            </article>
+
+        </section>
     </main>
 
-    <!-- Barra Lateral -->
-    <aside class="sidebar">
+    <!-- Sidebar -->
+    <aside>
+        <!-- Autor -->
+        <div class="sidebar-widget author-box">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=200&q=80" alt="Foto do Autor">
+            <h3 class="widget-title" style="border:none; padding:0; margin-bottom:0.5rem;">Ana Silva</h3>
+            <p>Apaixonada pela gastronomia simples e cheia de afeto. Compartilho receitas testadas e aprovadas para o seu dia a dia.</p>
+        </div>
+
         <!-- Newsletter -->
-        <div class="widget newsletter-widget">
-            <h3 style="color: var(--accent);">Resenha VIP</h3>
-            <p>Receba análises exclusivas e as principais notícias do futebol direto no seu e-mail.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Inscrição realizada!');">
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Receba Receitas</h3>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Inscreva-se para receber novas receitas semanalmente no seu e-mail.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
                 <input type="email" placeholder="Seu melhor e-mail" required>
                 <button type="submit">Inscrever-se</button>
             </form>
         </div>
-
-        <!-- Mais Lidas -->
-        <div class="widget">
-            <h3 class="section-title">Mais Lidas</h3>
-            <div class="popular-list">
-                <div class="popular-item">
-                    <span class="popular-number">1</span>
-                    <a href="#" class="popular-title">Entenda a nova regra do impedimento testada pela FIFA</a>
-                </div>
-                <div class="popular-item">
-                    <span class="popular-number">2</span>
-                    <a href="#" class="popular-title">Os 10 maiores salários do futebol mundial em 2024</a>
-                </div>
-                <div class="popular-item">
-                    <span class="popular-number">3</span>
-                    <a href="#" class="popular-title">Por que a pré-temporada define os campeões de maio?</a>
-                </div>
-            </div>
-        </div>
     </aside>
+
 </div>
 
-<!-- Rodapé -->
+<!-- Footer -->
 <footer>
-    <p>&copy; 2024 Na Trave - Todos os direitos reservados. Feito com paixão pelo futebol.</p>
+    <p>&copy; 2026 Sabor & Arte. Todos os direitos reservados.</p>
 </footer>
 
 </body>
