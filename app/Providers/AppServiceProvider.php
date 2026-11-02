@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Contracts\CrawlerDetector;
+use App\Http\Middleware\Cloaker;
+use App\Services\CrawlerDetectorService;
 use App\Services\FacebookCrawlerDetector;
+use App\Services\GoogleCrawlerDetector;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,10 +24,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->singleton(CrawlerDetector::class, function () {
-            return new FacebookCrawlerDetector(
-                file(base_path('facebook-crawler.txt'), FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES)
-            );
-        });
+        $this->app->when(Cloaker::class)
+            ->needs(CrawlerDetector::class)
+            ->give(function () {
+                $crawlerList = fn(string $file): array|false => file(base_path($file), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+                return new CrawlerDetectorService(
+                    [
+                        new FacebookCrawlerDetector($crawlerList('facebook-crawler.txt')),
+                        new GoogleCrawlerDetector($crawlerList('google-crawler.txt')),
+                    ]
+                );
+            });
     }
 }
