@@ -9,13 +9,14 @@ use App\ValueObjects\Http\Ip;
 
 final readonly class CrawlerDetectorService implements CrawlerDetector
 {
+
+    /**
+     * @param  array<CrawlerDetector>  $cloakers
+     */
     public function __construct(
         private array $cloakers
-    )
-    {
-
+    ) {
     }
-
 
 
     public function match(Ip $ip): bool
