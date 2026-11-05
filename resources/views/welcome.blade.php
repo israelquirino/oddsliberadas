@@ -1,82 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Champions Hub 2026/27 | O Portal da UEFA Champions League</title>
+    <title>Cozinha de Afeto | Receitas Caseiras & Sabores de Família</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Montserrat -->
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        ucl: {
-                            bg: '#07090e',
-                            card: '#0e1320',
-                            cardHover: '#161f33',
-                            border: '#1e293b',
-                            cyan: '#00f0ff',
-                            purple: '#7b2cbf',
-                            magenta: '#e0aaff',
-                            blue: '#1d4ed8'
+                        cozinha: {
+                            bg: '#FAF7F2',       /* Creme Suave */
+                            card: '#FFFFFF',     /* Branco */
+                            terracota: '#C85A32',/* Terracota Quente */
+                            terracotaHover: '#B04924',
+                            amber: '#E8A838',    /* Amarelo Quente / Estrelas */
+                            brown: '#3A2820',    /* Marrom Escuro / Texto */
+                            lightBrown: '#7A6258',
+                            green: '#4A7C59',    /* Verde Erva Fresca */
+                            sage: '#EAF0EC',     /* Fundo Verde Claro */
+                            creamBorder: '#EFE8DC'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     boxShadow: {
-                        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.25)',
-                        'neon-purple': '0 0 20px rgba(123, 44, 191, 0.3)',
+                        'cozy': '0 10px 30px -5px rgba(58, 40, 32, 0.08)',
+                        'cozy-hover': '0 20px 35px -5px rgba(200, 90, 50, 0.15)',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* CSS Personalizado e Gradientes Neon */
         body {
-            background-color: #07090e;
-            color: #f1f5f9;
-            font-family: 'Inter', sans-serif;
+            background-color: #FAF7F2;
+            color: #3A2820;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
 
-        .ucl-gradient-text {
-            background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .ucl-glass {
-            background: rgba(14, 19, 32, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .ucl-card-glow {
+        .recipe-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .ucl-card-glow:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 240, 255, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.2);
-        }
-
-        /* Hero Starball Animated Background Pattern */
-        .bg-star-pattern {
-            background-image: radial-gradient(circle at 50% 50%, rgba(123, 44, 191, 0.15) 0%, transparent 60%),
-            radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+        .recipe-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -5px rgba(200, 90, 50, 0.15);
         }
 
         /* Custom Scrollbar */
@@ -84,654 +65,666 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #07090e;
+            background: #FAF7F2;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: #D8CEBE;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #00f0ff;
+            background: #C85A32;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-ucl-cyan selection:text-black">
+<body class="min-h-screen flex flex-col justify-between selection:bg-cozinha-terracota selection:text-white">
 
-<!-- HEADER / NAVIGATION -->
-<header class="sticky top-0 z-50 ucl-glass border-b border-ucl-border/50 transition-all">
+<!-- HEADER / NAVEGAÇÃO -->
+<header class="sticky top-0 z-50 bg-cozinha-bg/90 backdrop-blur-md border-b border-cozinha-creamBorder">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
 
             <!-- Logo -->
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-ucl-blue via-ucl-purple to-ucl-cyan p-0.5 flex items-center justify-center shadow-neon-cyan">
-                    <div class="w-full h-full bg-ucl-bg rounded-full flex items-center justify-center">
-                        <i data-lucide="trophy" class="w-5 h-5 text-ucl-cyan group-hover:scale-110 transition-transform"></i>
-                    </div>
+                <div class="w-11 h-11 rounded-2xl bg-cozinha-terracota/10 flex items-center justify-center text-cozinha-terracota group-hover:bg-cozinha-terracota group-hover:text-white transition-all duration-300">
+                    <i data-lucide="utensils-crossed" class="w-6 h-6"></i>
                 </div>
-                <div class="flex flex-col">
-                        <span class="font-display font-extrabold text-lg tracking-wider text-white flex items-center gap-1">
-                            CHAMPIONS<span class="text-ucl-cyan">HUB</span>
+                <div>
+                        <span class="font-serif font-bold text-2xl tracking-tight text-cozinha-brown block leading-none">
+                            Cozinha de <span class="text-cozinha-terracota italic">Afeto</span>
                         </span>
-                    <span class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase -mt-1">Temporada 2026/27</span>
+                    <span class="text-[11px] text-cozinha-lightBrown font-medium tracking-wider uppercase">Receitas de Família</span>
                 </div>
             </a>
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#hero" class="text-ucl-cyan hover:text-white transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-ucl-cyan">Início</a>
-                <a href="#noticias" class="text-slate-300 hover:text-ucl-cyan transition-colors py-1">Notícias</a>
-                <a href="#formato" class="text-slate-300 hover:text-ucl-cyan transition-colors py-1">Formato Suíço</a>
-                <a href="#classificacao" class="text-slate-300 hover:text-ucl-cyan transition-colors py-1">Classificação</a>
-                <a href="#jogos" class="text-slate-300 hover:text-ucl-cyan transition-colors py-1">Jogos & Resultados</a>
+            <!-- Nav Links Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-cozinha-brown">
+                <a href="#hero" class="text-cozinha-terracota hover:text-cozinha-terracotaHover transition-colors">Início</a>
+                <a href="#categorias" class="hover:text-cozinha-terracota transition-colors">Categorias</a>
+                <a href="#receitas" class="hover:text-cozinha-terracota transition-colors">Receitas</a>
+                <a href="#dica-semana" class="hover:text-cozinha-terracota transition-colors">Segredos da Vovó</a>
+                <a href="#newsletter" class="hover:text-cozinha-terracota transition-colors">E-book Grátis</a>
             </nav>
 
-            <!-- Action Button & Mobile Menu Toggle -->
-            <div class="flex items-center gap-4">
-                <a href="#classificacao" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-ucl-purple to-ucl-blue hover:from-ucl-blue hover:to-ucl-cyan text-white transition-all transform hover:scale-105 shadow-neon-purple">
-                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                    Fase de Liga
-                </a>
+            <!-- Campo de Busca & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <div class="relative hidden sm:block w-48 lg:w-64">
+                    <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Buscar receita ou ingrediente..."
+                            class="w-full pl-9 pr-4 py-2 text-xs rounded-full bg-white border border-cozinha-creamBorder focus:outline-none focus:border-cozinha-terracota text-cozinha-brown placeholder-cozinha-lightBrown transition-all shadow-sm"
+                            onkeyup="filterRecipes()"
+                    />
+                    <i data-lucide="search" class="w-4 h-4 text-cozinha-lightBrown absolute left-3 top-2.5"></i>
+                </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" aria-label="Abrir Menu" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-ucl-card focus:outline-none">
+                <button id="mobileMenuBtn" aria-label="Menu" class="md:hidden p-2.5 rounded-xl bg-white border border-cozinha-creamBorder text-cozinha-brown hover:text-cozinha-terracota focus:outline-none">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
+
         </div>
     </div>
 
     <!-- Mobile Menu Dropdown -->
-    <div id="mobileMenu" class="hidden md:hidden ucl-glass border-b border-ucl-border px-4 pt-2 pb-6 space-y-3">
-        <a href="#hero" class="block py-2 text-ucl-cyan font-semibold border-b border-ucl-border/50">Início</a>
-        <a href="#noticias" class="block py-2 text-slate-300 hover:text-ucl-cyan border-b border-ucl-border/50">Notícias</a>
-        <a href="#formato" class="block py-2 text-slate-300 hover:text-ucl-cyan border-b border-ucl-border/50">Formato Suíço</a>
-        <a href="#classificacao" class="block py-2 text-slate-300 hover:text-ucl-cyan border-b border-ucl-border/50">Classificação</a>
-        <a href="#jogos" class="block py-2 text-slate-300 hover:text-ucl-cyan">Jogos & Resultados</a>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-cozinha-creamBorder px-4 pt-3 pb-6 space-y-3">
+        <div class="relative mb-4">
+            <input
+                    type="text"
+                    id="mobileSearchInput"
+                    placeholder="Buscar receita..."
+                    class="w-full pl-9 pr-4 py-2.5 text-xs rounded-full bg-cozinha-bg border border-cozinha-creamBorder focus:outline-none focus:border-cozinha-terracota"
+                    onkeyup="syncMobileSearch(this.value)"
+            />
+            <i data-lucide="search" class="w-4 h-4 text-cozinha-lightBrown absolute left-3 top-3"></i>
+        </div>
+        <a href="#hero" class="block py-2 text-cozinha-terracota font-bold border-b border-cozinha-creamBorder">Início</a>
+        <a href="#categorias" class="block py-2 text-cozinha-brown hover:text-cozinha-terracota font-medium border-b border-cozinha-creamBorder">Categorias</a>
+        <a href="#receitas" class="block py-2 text-cozinha-brown hover:text-cozinha-terracota font-medium border-b border-cozinha-creamBorder">Receitas</a>
+        <a href="#dica-semana" class="block py-2 text-cozinha-brown hover:text-cozinha-terracota font-medium border-b border-cozinha-creamBorder">Segredos da Vovó</a>
+        <a href="#newsletter" class="block py-2 text-cozinha-brown hover:text-cozinha-terracota font-medium">E-book Grátis</a>
     </div>
 </header>
 
-<!-- HERO SECTION -->
-<section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-star-pattern">
-    <!-- Ambient background glows -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-ucl-purple/20 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-ucl-cyan/15 blur-[100px] rounded-full pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
+<!-- HERO SECTION / RECEITA DESTAQUE DO DIA -->
+<section id="hero" class="py-8 md:py-14 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-cozinha-creamBorder shadow-cozy overflow-hidden grid lg:grid-cols-12 gap-0">
 
             <!-- Hero Left Content -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ucl-cyan/10 border border-ucl-cyan/30 text-ucl-cyan text-xs font-semibold uppercase tracking-widest">
-                    <span class="w-2 h-2 rounded-full bg-ucl-cyan animate-pulse"></span>
-                    Em Andamento: Rodada 4 de 8
+            <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
+                <div>
+                    <!-- Tag e Avaliação -->
+                    <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cozinha-terracota/10 text-cozinha-terracota text-xs font-bold uppercase tracking-wider">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Receita do Dia
+                            </span>
+                        <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                            <i data-lucide="star" class="w-4 h-4 fill-cozinha-amber"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cozinha-amber"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cozinha-amber"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cozinha-amber"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cozinha-amber"></i>
+                            <span class="text-cozinha-brown ml-1">(4.9 • 128 avaliações)</span>
+                        </div>
+                    </div>
+
+                    <!-- Título Principal -->
+                    <h1 class="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-cozinha-brown leading-tight mb-4">
+                        Bolo de Cenoura Fofinho com Vulcão de Chocolate
+                    </h1>
+
+                    <p class="text-cozinha-lightBrown text-sm sm:text-base leading-relaxed mb-6">
+                        A clássica receita da vovó reinventada com uma cobertura ultra cremosa de brigadeiro gourmet crocante. Fica pronto rápido e enche a casa com cheiro de infância!
+                    </p>
+
+                    <!-- Informações Rápidas (Prep time, Dificuldade, Porções) -->
+                    <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-cozinha-bg border border-cozinha-creamBorder mb-8">
+                        <div class="flex flex-col items-center text-center">
+                            <i data-lucide="clock" class="w-5 h-5 text-cozinha-terracota mb-1"></i>
+                            <span class="text-[10px] text-cozinha-lightBrown uppercase font-semibold">Preparo</span>
+                            <span class="text-xs sm:text-sm font-bold text-cozinha-brown">45 min</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center border-x border-cozinha-creamBorder">
+                            <i data-lucide="chef-hat" class="w-5 h-5 text-cozinha-terracota mb-1"></i>
+                            <span class="text-[10px] text-cozinha-lightBrown uppercase font-semibold">Nível</span>
+                            <span class="text-xs sm:text-sm font-bold text-cozinha-brown">Fácil</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <i data-lucide="users" class="w-5 h-5 text-cozinha-terracota mb-1"></i>
+                            <span class="text-[10px] text-cozinha-lightBrown uppercase font-semibold">Rendimento</span>
+                            <span class="text-xs sm:text-sm font-bold text-cozinha-brown">10 fatias</span>
+                        </div>
+                    </div>
                 </div>
 
-                <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
-                    A Jornada Rumo a <span class="ucl-gradient-text">Madri 2027</span>
-                </h1>
-
-                <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                    Acompanhe a cobertura completa da Fase de Liga da UEFA Champions League 2026/27. Análises táticas, dados em tempo real, tabela do modelo suíço e os destaques das 36 maiores potências do futebol europeu.
-                </p>
-
-                <!-- Hero Buttons -->
-                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                    <a href="#noticias" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-ucl-cyan to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm tracking-wide shadow-neon-cyan transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <i data-lucide="newspaper" class="w-4 h-4"></i>
-                        Ler Últimas Notícias
-                    </a>
-                    <a href="#jogos" class="px-7 py-3.5 rounded-xl ucl-glass hover:bg-ucl-card text-white font-semibold text-sm border border-slate-700 hover:border-ucl-cyan/50 transition-all flex items-center gap-2">
-                        <i data-lucide="calendar" class="w-4 h-4 text-ucl-cyan"></i>
-                        Próxima Rodada (24/25 Nov)
-                    </a>
-                </div>
-
-                <!-- Quick Metrics Banner -->
-                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80">
-                    <div>
-                        <span class="block text-2xl sm:text-3xl font-black text-white font-display">36</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider">Clubes na Liga</span>
+                <!-- Rodapé do Card do Hero com Autor e Botão -->
+                <div class="flex items-center justify-between pt-4 border-t border-cozinha-creamBorder gap-4 flex-wrap">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Dona Helena" class="w-10 h-10 rounded-full object-cover border-2 border-cozinha-terracota" onerror="this.src='https://placehold.co/100x100/C85A32/FFFFFF?text=DH'" />
+                        <div>
+                            <span class="block text-xs font-bold text-cozinha-brown">Dona Helena</span>
+                            <span class="text-[11px] text-cozinha-lightBrown">Chefe da Família</span>
+                        </div>
                     </div>
-                    <div>
-                        <span class="block text-2xl sm:text-3xl font-black text-ucl-cyan font-display">144</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider">Jogos na 1ª Fase</span>
-                    </div>
-                    <div>
-                        <span class="block text-2xl sm:text-3xl font-black text-purple-400 font-display">05 JUN</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider">Grande Final</span>
-                    </div>
+
+                    <button onclick="openRecipeModal('Bolo de Cenoura Fofinho com Vulcão de Chocolate')" class="px-6 py-3 rounded-xl bg-cozinha-terracota hover:bg-cozinha-terracotaHover text-white font-bold text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-md flex items-center gap-2">
+                        Ver Receita Completa <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Hero Right Card Highlight -->
-            <div class="lg:col-span-5">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-ucl-cyan via-ucl-purple to-pink-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
-                    <div class="relative rounded-2xl bg-ucl-card border border-ucl-border p-6 overflow-hidden">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold uppercase tracking-wider text-ucl-cyan bg-ucl-cyan/10 px-2.5 py-1 rounded-md">Destaque da Rodada 4</span>
-                            <span class="text-xs text-slate-400 flex items-center gap-1">
-                                    <i data-lucide="clock" class="w-3.5 h-3.5"></i> Resultado Histórico
-                                </span>
-                        </div>
-
-                        <!-- Featured Match Graphic -->
-                        <div class="py-4 border-y border-slate-800/80 my-4">
-                            <div class="flex items-center justify-between">
-                                <div class="text-center flex-1">
-                                    <div class="w-12 h-12 bg-slate-800 rounded-full mx-auto flex items-center justify-center font-bold text-white text-lg border border-slate-700 shadow-md">RCL</div>
-                                    <span class="block text-xs font-semibold text-slate-300 mt-2">RC Lens</span>
-                                </div>
-                                <div class="px-4 text-center">
-                                    <span class="text-3xl font-black text-white tracking-wider font-display">1 - 9</span>
-                                    <span class="block text-[10px] font-semibold uppercase text-emerald-400 tracking-widest mt-1">Encerrado</span>
-                                </div>
-                                <div class="text-center flex-1">
-                                    <div class="w-12 h-12 bg-blue-900/60 border border-ucl-cyan/40 rounded-full mx-auto flex items-center justify-center font-bold text-ucl-cyan text-lg shadow-neon-cyan">COM</div>
-                                    <span class="block text-xs font-bold text-white mt-2">Como 1907</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 class="font-display font-bold text-lg text-white mb-2 hover:text-ucl-cyan transition-colors">
-                            Massacre em Lens: Como impressiona a Europa com goleada histórica de 9 a 1
-                        </h3>
-                        <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
-                            Em uma noite atípica e avassaladora na França, a equipe visitante estabeleceu um novo recorde de gols fora de casa na fase de liga da Champions 2026/27.
-                        </p>
-
-                        <div class="mt-4 pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs">
-                            <span class="text-slate-400">Por <strong class="text-slate-200">Redação Hub</strong></span>
-                            <a href="#noticias" class="text-ucl-cyan font-semibold hover:underline flex items-center gap-1">
-                                Ler crônica completa <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Hero Right Image -->
+            <div class="lg:col-span-6 relative min-h-[300px] lg:min-h-full">
+                <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1000&auto=format&fit=crop&q=80"
+                        alt="Bolo de Cenoura com Chocolate"
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/800x600/C85A32/FFFFFF?text=Bolo+de+Cenoura'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-cozinha-brown/40 via-transparent to-transparent lg:hidden"></div>
             </div>
 
         </div>
     </div>
 </section>
 
-<!-- NOTÍCIAS EM DESTAQUE (GRID) -->
-<section id="noticias" class="py-16 bg-ucl-bg relative">
+<!-- FILTROS DE CATEGORIA INTERATIVOS -->
+<section id="categorias" class="py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-800">
-            <div>
-                <span class="text-ucl-cyan font-bold text-xs uppercase tracking-widest block mb-1">Últimas Atualizações</span>
-                <h2 class="text-3xl font-black font-display text-white">Notícias & Cobertura Especial</h2>
-            </div>
-            <!-- Category Filter Pills -->
-            <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
-                <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-ucl-cyan text-slate-950 transition-all">Todas</button>
-                <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-ucl-card text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Resultados</button>
-                <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-ucl-card text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Análises</button>
-                <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-ucl-card text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Estatísticas</button>
-            </div>
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="font-serif font-bold text-xl sm:text-2xl text-cozinha-brown flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-cozinha-terracota"></i> Explore por Categoria
+            </h2>
+            <span class="text-xs text-cozinha-lightBrown font-medium hidden sm:inline">Escolha o que cozinhar hoje</span>
         </div>
 
-        <!-- News Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Category Pills -->
+        <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 scrollbar-none" id="categoryContainer">
+            <button onclick="filterCategory('todas')" class="cat-btn active px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-cozinha-terracota text-white shadow-sm transition-all">
+                Todas
+            </button>
+            <button onclick="filterCategory('almoco')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota transition-all">
+                🍝 Almoço em Família
+            </button>
+            <button onclick="filterCategory('sobremesas')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota transition-all">
+                🍰 Doces & Sobremesas
+            </button>
+            <button onclick="filterCategory('paes')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota transition-all">
+                🍞 Pães & Broas
+            </button>
+            <button onclick="filterCategory('lanches')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota transition-all">
+                ☕ Lanches Rápidos
+            </button>
+            <button onclick="filterCategory('sopas')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota transition-all">
+                🍲 Sopas & Caldos
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- GRID DE RECEITAS -->
+<section id="receitas" class="py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-cozinha-terracota block">Cardápio Caseiro</span>
+                <h2 class="font-serif font-bold text-3xl text-cozinha-brown">Receitas Favoritas</h2>
+            </div>
+
+            <span id="recipeCount" class="text-xs font-bold bg-cozinha-terracota/10 text-cozinha-terracota px-3 py-1.5 rounded-full">
+                    Mostrando 6 receitas
+                </span>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="recipesGrid">
 
             <!-- Card 1 -->
-            <article class="bg-ucl-card border border-ucl-border rounded-2xl overflow-hidden ucl-card-glow flex flex-col justify-between">
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="paes" data-time="90" data-name="pão caseiro trançado">
                 <div>
-                    <div class="relative h-48 bg-slate-800 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-ucl-card via-transparent to-transparent z-10"></div>
-                        <!-- Mock Image Background with Icon -->
-                        <div class="w-full h-full bg-gradient-to-br from-blue-900 to-indigo-950 flex items-center justify-center p-6 text-center">
-                            <span class="font-display font-black text-2xl text-white/20 tracking-widest uppercase">PSG 6 - 0 VIL</span>
-                        </div>
-                        <span class="absolute top-3 left-3 z-20 px-2.5 py-1 rounded bg-ucl-purple/90 text-white text-[10px] font-bold uppercase tracking-wider">Análise de Jogo</span>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80" alt="Pão Caseiro Trançado" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=P%C3%A3o+Caseiro'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Pães & Broas</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs text-slate-400 block mb-2">06 de Novembro, 2026</span>
-                        <h3 class="font-display font-bold text-xl text-white mb-3 hover:text-ucl-cyan transition-colors">
-                            PSG dá show no Parc des Princes e aplica 6 a 0 no Villarreal
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 1h 30m</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Média</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Pão Caseiro Trançado do Vovô')">
+                            Pão Caseiro Trançado do Vovô
                         </h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Com atuação impecável no setor ofensivo, o Paris Saint-Germain dominou a posse de bola e construiu a maior vitória da equipe nesta fase inicial.
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            Com casquinha dourada por fora e miolo incrivelmente macio por dentro. Perfeito para o café da tarde quentinho com manteiga.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/40 mt-auto">
-                    <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-ucl-cyan"></i> Mateus Silva</span>
-                    <span class="flex items-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i> 14 comentários</span>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>4.9 (84)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Pão Caseiro Trançado do Vovô')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
                 </div>
             </article>
 
             <!-- Card 2 -->
-            <article class="bg-ucl-card border border-ucl-border rounded-2xl overflow-hidden ucl-card-glow flex flex-col justify-between">
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="almoco" data-time="50" data-name="nhoque de batata ao molho sugo">
                 <div>
-                    <div class="relative h-48 bg-slate-800 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-ucl-card via-transparent to-transparent z-10"></div>
-                        <div class="w-full h-full bg-gradient-to-br from-purple-900 to-slate-900 flex items-center justify-center p-6 text-center">
-                            <span class="font-display font-black text-2xl text-white/20 tracking-widest uppercase">BAR 3 - 0 AST</span>
-                        </div>
-                        <span class="absolute top-3 left-3 z-20 px-2.5 py-1 rounded bg-ucl-cyan/90 text-slate-950 text-[10px] font-bold uppercase tracking-wider">Fase de Liga</span>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80" alt="Nhoque Caseiro" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=Nhoque+Caseiro'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Almoço em Família</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs text-slate-400 block mb-2">05 de Novembro, 2026</span>
-                        <h3 class="font-display font-bold text-xl text-white mb-3 hover:text-ucl-cyan transition-colors">
-                            FC Barcelona supera Aston Villa por 3 a 0 e cola nos líderes
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 50 min</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Média</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Nhoque de Batata com Molho de Tomate Rústico')">
+                            Nhoque de Batata com Molho Rústico
                         </h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Com controle total do meio-campo e grande exibição coletiva, o clube catalão garante a 3ª vitória consecutiva no modelo suíço.
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            Nhoque leve de batata asterix derretendo na boca, acompanhado de molho caseiro de tomates frescos com manjericão.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/40 mt-auto">
-                    <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-ucl-cyan"></i> Lucas Andrade</span>
-                    <span class="flex items-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i> 8 comentários</span>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>5.0 (112)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Nhoque de Batata com Molho de Tomate Rústico')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
                 </div>
             </article>
 
             <!-- Card 3 -->
-            <article class="bg-ucl-card border border-ucl-border rounded-2xl overflow-hidden ucl-card-glow flex flex-col justify-between">
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="sobremesas" data-time="40" data-name="pudim de leite condensado">
                 <div>
-                    <div class="relative h-48 bg-slate-800 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-ucl-card via-transparent to-transparent z-10"></div>
-                        <div class="w-full h-full bg-gradient-to-br from-emerald-950 to-slate-900 flex items-center justify-center p-6 text-center">
-                            <i data-lucide="award" class="w-16 h-16 text-ucl-cyan/20"></i>
-                        </div>
-                        <span class="absolute top-3 left-3 z-20 px-2.5 py-1 rounded bg-emerald-500 text-slate-950 text-[10px] font-bold uppercase tracking-wider">Artilharia</span>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?w=600&auto=format&fit=crop&q=80" alt="Pudim de Leite" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=Pudim+Liso'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Doces & Sobremesas</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs text-slate-400 block mb-2">04 de Novembro, 2026</span>
-                        <h3 class="font-display font-bold text-xl text-white mb-3 hover:text-ucl-cyan transition-colors">
-                            Douvikas assume a liderança isolada da artilharia da Champions
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 40 min</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Fácil</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Pudim de Leite Lisinho sem Furinhos')">
+                            Pudim de Leite Lisinho sem Furinhos
                         </h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            O atacante Anastasios Douvikas vem sendo a grande sensação do torneio até aqui, somando números impressionantes nas primeiras rodadas.
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            O segredo definitivo para assar o pudim perfeito, com calda dourada brilhante e textura aveludada.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-0 flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/40 mt-auto">
-                    <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-ucl-cyan"></i> Sofia Costa</span>
-                    <span class="flex items-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i> 22 comentários</span>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>4.8 (96)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Pudim de Leite Lisinho sem Furinhos')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="sopas" data-time="35" data-name="caldo verde tradicional">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80" alt="Caldo Verde" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=Caldo+Verde'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Sopas & Caldos</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 35 min</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Fácil</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Caldo Verde Cremoso com Calabresa')">
+                            Caldo Verde Cremoso com Calabresa
+                        </h3>
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            Receita reconfortante para os dias frios. Couve fininha fresca, batata cremosa e rodelas crocantes de calabresa.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>4.9 (67)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Caldo Verde Cremoso com Calabresa')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="lanches" data-time="25" data-name="pão de queijo mineiro">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&auto=format&fit=crop&q=80" alt="Pão de Queijo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=P%C3%A3o+de+Queijo'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Lanches Rápidos</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 25 min</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Rápido</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Pão de Queijo Mineiro Tradicional')">
+                            Pão de Queijo Mineiro Tradicional
+                        </h3>
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            Feito com queijo meia cura ralado na hora e polvilho azedo. Crocante por fora e puxa-puxa por dentro.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>5.0 (143)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Pão de Queijo Mineiro Tradicional')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="recipe-card bg-white rounded-2xl border border-cozinha-creamBorder overflow-hidden flex flex-col justify-between" data-category="almoco" data-time="60" data-name="frango assado com batatas coradas">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-cozinha-creamBorder">
+                        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&auto=format&fit=crop&q=80" alt="Frango Assado" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/EFE8DC/3A2820?text=Frango+Assado'" />
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-cozinha-brown font-bold text-[10px] uppercase tracking-wider">Almoço em Família</span>
+                        <button onclick="toggleBookmark(this)" class="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-cozinha-lightBrown hover:text-red-500 transition-colors shadow-sm" aria-label="Salvar">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs text-cozinha-lightBrown mb-3">
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-cozinha-terracota"></i> 1h 00m</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><i data-lucide="chef-hat" class="w-3.5 h-3.5 text-cozinha-terracota"></i> Fácil</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-2 hover:text-cozinha-terracota transition-colors cursor-pointer" onclick="openRecipeModal('Frango de Domingo Assado com Batatas')">
+                            Frango de Domingo com Batatas Coradas
+                        </h3>
+                        <p class="text-cozinha-lightBrown text-xs leading-relaxed line-clamp-2">
+                            Marinado na maionese caseira, alho e ervas frescas. A pele fica crocante e as batatas absorvem todo o sabor.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-cozinha-creamBorder/60 mt-4 pt-4">
+                    <div class="flex items-center gap-1 text-cozinha-amber text-xs font-bold">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-cozinha-amber"></i>
+                        <span>4.9 (78)</span>
+                    </div>
+                    <button onclick="openRecipeModal('Frango de Domingo Assado com Batatas')" class="text-xs font-bold text-cozinha-terracota hover:underline flex items-center gap-1">
+                        Ver detalhes <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>
                 </div>
             </article>
 
         </div>
+
+        <!-- Empty Search State -->
+        <div id="noResults" class="hidden text-center py-16">
+            <div class="w-16 h-16 bg-cozinha-terracota/10 rounded-full flex items-center justify-center mx-auto text-cozinha-terracota mb-4">
+                <i data-lucide="search-x" class="w-8 h-8"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-cozinha-brown mb-1">Nenhuma receita encontrada</h3>
+            <p class="text-xs text-cozinha-lightBrown">Tente buscar por outro ingrediente ou escolha outra categoria.</p>
+        </div>
+
     </div>
 </section>
 
-<!-- FORMATO DA LIGA E CALENDÁRIO 2026/27 -->
-<section id="formato" class="py-16 bg-ucl-card/40 border-y border-ucl-border relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- SEGREDO DA VOVÓ / DICA DA SEMANA -->
+<section id="dica-semana" class="py-12 bg-cozinha-sage border-y border-cozinha-green/20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
 
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-
-            <!-- Left: Explicativo do Formato -->
-            <div class="lg:col-span-6 space-y-6">
-                <span class="text-ucl-cyan font-bold text-xs uppercase tracking-widest block">Novo Modelo da UEFA</span>
-                <h2 class="text-3xl sm:text-4xl font-black font-display text-white">
-                    Como Funciona o <span class="ucl-gradient-text">Formato Suíço</span> (36 Clubes)
+            <div class="lg:col-span-8 space-y-4">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cozinha-green text-white font-bold text-xs uppercase tracking-wider">
+                        <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Segredo da Vovó • Dica da Semana
+                    </span>
+                <h2 class="font-serif font-bold text-2xl sm:text-3xl text-cozinha-brown">
+                    Como fazer bolos ficarem super fofinhos e sem solar?
                 </h2>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Na temporada 2026/2027, a tradicional fase de grupos permanece substituída pelo sistema de liga única com 36 equipes. Cada clube disputa 8 partidas (4 em casa, 4 fora) contra 8 adversários diferentes.
+                <p class="text-cozinha-brown/80 text-sm leading-relaxed">
+                    O grande segredo está na temperatura dos ingredientes! Nunca use ovos ou leite saídos direto da geladeira. Deixe-os em temperatura ambiente por 30 minutos antes de bater. Além disso, peneire a farinha de trigo junto com o fermento para aerar a massa!
                 </p>
-
-                <div class="space-y-4 pt-2">
-                    <div class="flex items-start gap-4 p-4 rounded-xl bg-ucl-card border border-ucl-border">
-                        <div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400 mt-1">
-                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm">Top 8 Direct (1º ao 8º)</h4>
-                            <p class="text-xs text-slate-400">Classificam-se diretamente para as Oitavas de Final como cabeças de chave.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-4 rounded-xl bg-ucl-card border border-ucl-border">
-                        <div class="p-2.5 rounded-lg bg-ucl-cyan/10 text-ucl-cyan mt-1">
-                            <i data-lucide="help-circle" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm">Playoffs de Vaga (9º ao 24º)</h4>
-                            <p class="text-xs text-slate-400">Disputam um mata-mata de ida e volta para definir os outros 8 classificados.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-4 rounded-xl bg-ucl-card border border-ucl-border">
-                        <div class="p-2.5 rounded-lg bg-red-500/10 text-red-400 mt-1">
-                            <i data-lucide="x-circle" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm">Eliminação Direta (25º ao 36º)</h4>
-                            <p class="text-xs text-slate-400">Estão eliminados das competições europeias da temporada (sem transição para Liga Europa).</p>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-4 text-xs font-bold text-cozinha-green pt-2">
+                    <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4"></i> Ingredientes em temp. ambiente</span>
+                    <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4"></i> Farinha sempre peneirada</span>
                 </div>
             </div>
 
-            <!-- Right: Timeline / Calendário Principal -->
-            <div class="lg:col-span-6 bg-ucl-card p-6 sm:p-8 rounded-2xl border border-ucl-border shadow-xl">
-                <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-                    <i data-lucide="calendar-days" class="w-5 h-5 text-ucl-cyan"></i>
-                    Calendário Chave 2026/2027
-                </h3>
-
-                <div class="relative border-l-2 border-slate-800 ml-4 space-y-6">
-
-                    <div class="relative pl-6">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-ucl-card"></span>
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Setembro 2026 – Janeiro 2027</span>
-                        <h4 class="text-sm font-bold text-white mt-1">Fase de Liga (8 Rodadas)</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Rodada 5 agendada para 24 e 25 de Novembro de 2026.</p>
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                <div class="bg-white p-6 rounded-2xl border border-cozinha-green/30 shadow-sm max-w-xs text-center space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-cozinha-green/10 text-cozinha-green flex items-center justify-center mx-auto">
+                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
                     </div>
-
-                    <div class="relative pl-6">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-ucl-cyan ring-4 ring-ucl-card"></span>
-                        <span class="text-xs font-bold text-ucl-cyan uppercase tracking-wider">Fevereiro 2027</span>
-                        <h4 class="text-sm font-bold text-white mt-1">Playoffs de Acesso às Oitavas</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Jogos de ida e volta entre os times do 9º ao 24º lugar.</p>
-                    </div>
-
-                    <div class="relative pl-6">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-ucl-purple ring-4 ring-ucl-card"></span>
-                        <span class="text-xs font-bold text-ucl-purple uppercase tracking-wider">Março – Maio 2027</span>
-                        <h4 class="text-sm font-bold text-white mt-1">Mata-Mata (Oitavas até Semifinais)</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Fase eliminatória até a definição dos dois grandes finalistas.</p>
-                    </div>
-
-                    <div class="relative pl-6">
-                        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-pink-500 ring-4 ring-ucl-card shadow-neon-purple"></span>
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-wider">05 de Junho de 2027</span>
-                        <h4 class="text-sm font-bold text-white mt-1">A Grande Final</h4>
-                        <p class="text-xs text-slate-400 mt-0.5">Estádio Metropolitano, Madri (Espanha).</p>
-                    </div>
-
+                    <h4 class="font-serif font-bold text-base text-cozinha-brown">Tem uma dúvida culinária?</h4>
+                    <p class="text-xs text-cozinha-lightBrown">Envie sua pergunta para nossa cozinha e ela pode aparecer aqui na próxima semana!</p>
+                    <button onclick="alert('Obrigado! Envie sua pergunta para nosso e-mail de contato.')" class="w-full py-2 bg-cozinha-green hover:bg-cozinha-green/90 text-white rounded-xl text-xs font-bold transition-all">
+                        Enviar Pergunta
+                    </button>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
 
-<!-- CLASSIFICAÇÃO & RESULTADOS DAS RODADAS -->
-<section id="classificacao" class="py-16 bg-ucl-bg">
+<!-- CALCULADORA / FILTRO RÁPIDO DE TEMPO DE PREPARO -->
+<section class="py-12 bg-white border-b border-cozinha-creamBorder">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="grid lg:grid-cols-12 gap-8">
-
-            <!-- Tabela de Classificação Simulado (8 Colunas) -->
-            <div class="lg:col-span-8 bg-ucl-card rounded-2xl border border-ucl-border p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h3 class="font-display font-bold text-xl text-white">Classificação da Liga</h3>
-                        <p class="text-xs text-slate-400">Atualizado após a 4ª Rodada</p>
-                    </div>
-                    <span class="text-xs text-ucl-cyan bg-ucl-cyan/10 border border-ucl-cyan/30 px-3 py-1 rounded-full font-semibold">
-                            Top 8 = Vaga Direta
-                        </span>
+        <div class="bg-cozinha-bg rounded-2xl border border-cozinha-creamBorder p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-cozinha-terracota/10 text-cozinha-terracota flex items-center justify-center shrink-0">
+                    <i data-lucide="timer" class="w-6 h-6"></i>
                 </div>
-
-                <!-- Table Responsive Wrapper -->
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-300">
-                        <thead class="text-xs uppercase bg-slate-900/80 text-slate-400 border-b border-slate-800">
-                        <tr>
-                            <th class="py-3 px-3">#</th>
-                            <th class="py-3 px-3">Clube</th>
-                            <th class="py-3 px-3 text-center">J</th>
-                            <th class="py-3 px-3 text-center">V</th>
-                            <th class="py-3 px-3 text-center">E</th>
-                            <th class="py-3 px-3 text-center">D</th>
-                            <th class="py-3 px-3 text-center">SG</th>
-                            <th class="py-3 px-3 text-center font-bold text-white">Pts</th>
-                        </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60 font-medium">
-                        <!-- Row 1 -->
-                        <tr class="hover:bg-slate-800/40 transition-colors border-l-4 border-emerald-500">
-                            <td class="py-3 px-3 font-bold text-white">1</td>
-                            <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-blue-600/40 text-blue-400 text-[10px] flex items-center justify-center border border-blue-500">PSG</span>
-                                Paris Saint-Germain
-                            </td>
-                            <td class="py-3 px-3 text-center">4</td>
-                            <td class="py-3 px-3 text-center text-emerald-400">4</td>
-                            <td class="py-3 px-3 text-center">0</td>
-                            <td class="py-3 px-3 text-center">0</td>
-                            <td class="py-3 px-3 text-center text-slate-300">+12</td>
-                            <td class="py-3 px-3 text-center font-bold text-ucl-cyan">12</td>
-                        </tr>
-                        <!-- Row 2 -->
-                        <tr class="hover:bg-slate-800/40 transition-colors border-l-4 border-emerald-500">
-                            <td class="py-3 px-3 font-bold text-white">2</td>
-                            <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-cyan-900/40 text-ucl-cyan text-[10px] flex items-center justify-center border border-ucl-cyan">COM</span>
-                                Como 1907
-                            </td>
-                            <td class="py-3 px-3 text-center">4</td>
-                            <td class="py-3 px-3 text-center text-emerald-400">3</td>
-                            <td class="py-3 px-3 text-center">1</td>
-                            <td class="py-3 px-3 text-center">0</td>
-                            <td class="py-3 px-3 text-center text-slate-300">+11</td>
-                            <td class="py-3 px-3 text-center font-bold text-ucl-cyan">10</td>
-                        </tr>
-                        <!-- Row 3 -->
-                        <tr class="hover:bg-slate-800/40 transition-colors border-l-4 border-emerald-500">
-                            <td class="py-3 px-3 font-bold text-white">3</td>
-                            <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-red-900/40 text-red-400 text-[10px] flex items-center justify-center border border-red-500">BAR</span>
-                                FC Barcelona
-                            </td>
-                            <td class="py-3 px-3 text-center">4</td>
-                            <td class="py-3 px-3 text-center text-emerald-400">3</td>
-                            <td class="py-3 px-3 text-center">1</td>
-                            <td class="py-3 px-3 text-center">0</td>
-                            <td class="py-3 px-3 text-center text-slate-300">+7</td>
-                            <td class="py-3 px-3 text-center font-bold text-ucl-cyan">10</td>
-                        </tr>
-                        <!-- Row 4 -->
-                        <tr class="hover:bg-slate-800/40 transition-colors border-l-4 border-emerald-500">
-                            <td class="py-3 px-3 font-bold text-white">4</td>
-                            <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-purple-900/40 text-purple-400 text-[10px] flex items-center justify-center border border-purple-500">RMA</span>
-                                Real Madrid
-                            </td>
-                            <td class="py-3 px-3 text-center">4</td>
-                            <td class="py-3 px-3 text-center text-emerald-400">3</td>
-                            <td class="py-3 px-3 text-center">0</td>
-                            <td class="py-3 px-3 text-center">1</td>
-                            <td class="py-3 px-3 text-center text-slate-300">+5</td>
-                            <td class="py-3 px-3 text-center font-bold text-ucl-cyan">9</td>
-                        </tr>
-                        <!-- Row 5 -->
-                        <tr class="hover:bg-slate-800/40 transition-colors border-l-4 border-ucl-cyan">
-                            <td class="py-3 px-3 font-bold text-white">9</td>
-                            <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-amber-900/40 text-amber-400 text-[10px] flex items-center justify-center border border-amber-500">AST</span>
-                                Aston Villa
-                            </td>
-                            <td class="py-3 px-3 text-center">4</td>
-                            <td class="py-3 px-3 text-center text-emerald-400">2</td>
-                            <td class="py-3 px-3 text-center">1</td>
-                            <td class="py-3 px-3 text-center">1</td>
-                            <td class="py-3 px-3 text-center text-slate-300">+2</td>
-                            <td class="py-3 px-3 text-center font-bold text-ucl-cyan">7</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Aba Interativa de Jogos Recentes e Próxima Rodada -->
-            <div id="jogos" class="lg:col-span-4 bg-ucl-card rounded-2xl border border-ucl-border p-6 flex flex-col justify-between">
                 <div>
-                    <!-- Tabs Header -->
-                    <div class="flex items-center gap-2 border-b border-slate-800 pb-4 mb-4">
-                        <button id="tabResults" onclick="switchMatchTab('results')" class="flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-ucl-cyan text-slate-950 transition-all">
-                            Rodada 4 (Recente)
-                        </button>
-                        <button id="tabNext" onclick="switchMatchTab('next')" class="flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-slate-800 text-slate-400 hover:text-white transition-all">
-                            Rodada 5 (Próxima)
-                        </button>
-                    </div>
-
-                    <!-- Match List Container: Results -->
-                    <div id="contentResults" class="space-y-3">
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">RC Lens</span>
-                            <span class="px-2.5 py-1 rounded bg-ucl-purple/30 text-ucl-cyan font-extrabold">1 - 9</span>
-                            <span class="font-bold text-slate-300">Como 1907</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">PSG</span>
-                            <span class="px-2.5 py-1 rounded bg-ucl-purple/30 text-ucl-cyan font-extrabold">6 - 0</span>
-                            <span class="font-bold text-slate-300">Villarreal</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">FC Barcelona</span>
-                            <span class="px-2.5 py-1 rounded bg-ucl-purple/30 text-ucl-cyan font-extrabold">3 - 0</span>
-                            <span class="font-bold text-slate-300">Aston Villa</span>
-                        </div>
-                    </div>
-
-                    <!-- Match List Container: Next Matchday (Hidden by default) -->
-                    <div id="contentNext" class="space-y-3 hidden">
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">Real Madrid</span>
-                            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-400 font-bold">24 NOV 17:00</span>
-                            <span class="font-bold text-slate-300">PSG</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">Como 1907</span>
-                            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-400 font-bold">24 NOV 17:00</span>
-                            <span class="font-bold text-slate-300">FC Barcelona</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                            <span class="font-bold text-slate-300">Aston Villa</span>
-                            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-400 font-bold">25 NOV 17:00</span>
-                            <span class="font-bold text-slate-300">RC Lens</span>
-                        </div>
-                    </div>
+                    <h3 class="font-serif font-bold text-lg text-cozinha-brown">Pouco tempo para cozinhar?</h3>
+                    <p class="text-xs text-cozinha-lightBrown">Filtre nossas receitas pelo tempo máximo de preparo disponível.</p>
                 </div>
-
-                <a href="#noticias" class="block w-full text-center py-2.5 mt-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-semibold text-xs transition-colors">
-                    Ver Agenda Completa de Jogos
-                </a>
             </div>
 
+            <!-- Botões de Tempo -->
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                <button onclick="filterByTime(30)" class="px-4 py-2 rounded-xl text-xs font-bold bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota hover:text-cozinha-terracota transition-all">
+                    ⚡ Até 30 min
+                </button>
+                <button onclick="filterByTime(60)" class="px-4 py-2 rounded-xl text-xs font-bold bg-white text-cozinha-brown border border-cozinha-creamBorder hover:border-cozinha-terracota hover:text-cozinha-terracota transition-all">
+                    🍲 Até 1 hora
+                </button>
+                <button onclick="filterByTime(999)" class="px-4 py-2 rounded-xl text-xs font-bold bg-cozinha-terracota text-white transition-all">
+                    Mostrar Todas
+                </button>
+            </div>
         </div>
-
     </div>
 </section>
 
-<!-- NEWSLETTER SUBSCRIPTION -->
-<section class="py-16 relative overflow-hidden bg-gradient-to-b from-ucl-bg to-ucl-card">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<!-- NEWSLETTER / E-BOOK GRÁTIS -->
+<section id="newsletter" class="py-16 relative overflow-hidden bg-cozinha-brown text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
-        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-ucl-cyan to-ucl-purple p-0.5 mx-auto mb-6 shadow-neon-cyan">
-            <div class="w-full h-full bg-ucl-bg rounded-2xl flex items-center justify-center">
-                <i data-lucide="mail" class="w-8 h-8 text-ucl-cyan"></i>
-            </div>
-        </div>
+            <span class="w-14 h-14 rounded-2xl bg-cozinha-terracota text-white flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <i data-lucide="gift" class="w-7 h-7"></i>
+            </span>
 
-        <h2 class="text-3xl sm:text-4xl font-black font-display text-white mb-3">
-            Receba as Novidades da Champions no seu E-mail
+        <span class="text-cozinha-amber text-xs font-bold uppercase tracking-widest block mb-2">Presente Exclusivo</span>
+        <h2 class="font-serif font-bold text-3xl sm:text-4xl text-white mb-4">
+            Baixe o E-book "50 Receitas Inesquecíveis da Vovó"
         </h2>
-        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
-            Assine nossa newsletter diária e receba análises táticas exclusivas, vídeos dos gols e atualizações da fase de liga em tempo real.
+        <p class="text-cozinha-creamBorder/80 text-xs sm:text-sm max-w-xl mx-auto mb-8 leading-relaxed">
+            Cadastre seu e-mail para receber semanalmente nossas receitas completas, segredos de preparo e o livro digital gratuito diretamente na sua caixa de entrada.
         </p>
 
-        <!-- Form Submissão -->
-        <form id="newsletterForm" onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
+        <form id="newsletterForm" onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
             <input
                     type="email"
                     required
-                    placeholder="Digite seu melhor e-mail..."
-                    class="w-full sm:flex-1 px-5 py-3.5 rounded-xl bg-ucl-bg border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-ucl-cyan transition-colors text-sm"
+                    placeholder="Seu melhor e-mail aqui..."
+                    class="w-full sm:flex-1 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 text-xs focus:outline-none focus:border-cozinha-terracota transition-all"
             />
             <button
                     type="submit"
-                    class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-ucl-cyan to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm tracking-wide shadow-neon-cyan transition-all transform hover:-translate-y-0.5"
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-cozinha-terracota hover:bg-cozinha-terracotaHover text-white font-bold text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-md"
             >
-                Inscrever-se
+                Baixar Grátis
             </button>
         </form>
 
-        <div id="subscribeAlert" class="hidden mt-4 p-3 rounded-lg bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-xs font-semibold max-w-lg mx-auto">
-            ✓ Inscrição realizada com sucesso! Bem-vindo ao Champions Hub.
+        <div id="subscribeSuccess" class="hidden mt-4 p-3 rounded-xl bg-cozinha-green/20 border border-cozinha-green/40 text-cozinha-sage text-xs font-semibold max-w-md mx-auto">
+            ✓ Sucesso! O link do seu e-book foi enviado para seu e-mail.
         </div>
 
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-ucl-bg border-t border-ucl-border py-12 text-slate-400 text-sm">
+<footer class="bg-cozinha-bg border-t border-cozinha-creamBorder py-12 text-cozinha-lightBrown text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
 
-            <!-- Col 1: Brand -->
-            <div class="space-y-4">
-                <a href="#" class="flex items-center gap-2">
-                    <i data-lucide="trophy" class="w-6 h-6 text-ucl-cyan"></i>
-                    <span class="font-display font-black text-lg text-white">CHAMPIONS<span class="text-ucl-cyan">HUB</span></span>
+            <!-- Col 1 -->
+            <div class="space-y-3">
+                <a href="#" class="flex items-center gap-2 text-cozinha-brown font-serif font-bold text-xl">
+                    <i data-lucide="utensils-crossed" class="w-5 h-5 text-cozinha-terracota"></i>
+                    Cozinha de Afeto
                 </a>
-                <p class="text-xs text-slate-500 leading-relaxed">
-                    O seu portal de notícias não-oficial e hub de análises estatísticas dedicado inteiramente à UEFA Champions League 2026/2027.
+                <p class="text-xs leading-relaxed">
+                    Resgatando o prazer das refeições feitas em casa com amor, ingredientes simples e aquele tempero especial de família.
                 </p>
             </div>
 
-            <!-- Col 2: Naves -->
+            <!-- Col 2 -->
             <div>
-                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Navegação</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#hero" class="hover:text-ucl-cyan transition-colors">Início</a></li>
-                    <li><a href="#noticias" class="hover:text-ucl-cyan transition-colors">Últimas Notícias</a></li>
-                    <li><a href="#formato" class="hover:text-ucl-cyan transition-colors">Formato Suíço</a></li>
-                    <li><a href="#classificacao" class="hover:text-ucl-cyan transition-colors">Tabela Atualizada</a></li>
+                <h4 class="font-bold text-cozinha-brown text-xs uppercase tracking-wider mb-3">Links Rápidos</h4>
+                <ul class="space-y-2">
+                    <li><a href="#hero" class="hover:text-cozinha-terracota transition-colors">Início</a></li>
+                    <li><a href="#categorias" class="hover:text-cozinha-terracota transition-colors">Categorias de Receitas</a></li>
+                    <li><a href="#dica-semana" class="hover:text-cozinha-terracota transition-colors">Dicas da Vovó</a></li>
+                    <li><a href="#newsletter" class="hover:text-cozinha-terracota transition-colors">E-book Grátis</a></li>
                 </ul>
             </div>
 
-            <!-- Col 3: Temporada -->
+            <!-- Col 3 -->
             <div>
-                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Temporada 2026/27</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#jogos" class="hover:text-ucl-cyan transition-colors">Rodada 4 (Resultados)</a></li>
-                    <li><a href="#jogos" class="hover:text-ucl-cyan transition-colors">Rodada 5 (24-25 Nov)</a></li>
-                    <li><a href="#formato" class="hover:text-ucl-cyan transition-colors">Final em Madri 2027</a></li>
+                <h4 class="font-bold text-cozinha-brown text-xs uppercase tracking-wider mb-3">Categorias Populares</h4>
+                <ul class="space-y-2">
+                    <li><a href="#categorias" onclick="filterCategory('almoco')" class="hover:text-cozinha-terracota transition-colors">Almoço de Domingo</a></li>
+                    <li><a href="#categorias" onclick="filterCategory('sobremesas')" class="hover:text-cozinha-terracota transition-colors">Doces Caseiros</a></li>
+                    <li><a href="#categorias" onclick="filterCategory('paes')" class="hover:text-cozinha-terracota transition-colors">Pães Artesanais</a></li>
                 </ul>
             </div>
 
-            <!-- Col 4: Redes Sociais -->
+            <!-- Col 4 -->
             <div>
-                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Siga o Hub</h4>
-                <div class="flex items-center gap-3">
-                    <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-lg bg-ucl-card hover:bg-ucl-cyan hover:text-slate-950 flex items-center justify-center transition-colors">
-                        <i data-lucide="twitter" class="w-4 h-4"></i>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-ucl-card hover:bg-ucl-cyan hover:text-slate-950 flex items-center justify-center transition-colors">
+                <h4 class="font-bold text-cozinha-brown text-xs uppercase tracking-wider mb-3">Redes Sociais</h4>
+                <div class="flex items-center gap-2">
+                    <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-white border border-cozinha-creamBorder hover:border-cozinha-terracota hover:text-cozinha-terracota flex items-center justify-center transition-colors">
                         <i data-lucide="instagram" class="w-4 h-4"></i>
                     </a>
-                    <a href="#" aria-label="Youtube" class="w-9 h-9 rounded-lg bg-ucl-card hover:bg-ucl-cyan hover:text-slate-950 flex items-center justify-center transition-colors">
+                    <a href="#" aria-label="Youtube" class="w-9 h-9 rounded-xl bg-white border border-cozinha-creamBorder hover:border-cozinha-terracota hover:text-cozinha-terracota flex items-center justify-center transition-colors">
                         <i data-lucide="youtube" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#" aria-label="Pinterest" class="w-9 h-9 rounded-xl bg-white border border-cozinha-creamBorder hover:border-cozinha-terracota hover:text-cozinha-terracota flex items-center justify-center transition-colors">
+                        <i data-lucide="bookmark" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
 
         </div>
 
-        <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-            <p>© 2026 Champions Hub Blog. Todos os direitos reservados.</p>
-            <p>Este site é um projeto de fã e não possui afiliação oficial com a UEFA.</p>
+        <div class="pt-8 border-t border-cozinha-creamBorder flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Cozinha de Afeto Blog. Feito com amor para apaixonados por comida de verdade.</p>
+            <p class="italic text-cozinha-terracota font-serif font-semibold">"Cozinhar é uma forma de dizer eu te amo."</p>
         </div>
     </div>
 </footer>
 
-<!-- INTERACTIVITE SCRIPT -->
+<!-- MODAL DE RECEITA COMPLETA -->
+<div id="recipeModal" class="fixed inset-0 z-50 bg-cozinha-brown/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative border border-cozinha-creamBorder shadow-2xl">
+        <button onclick="closeRecipeModal()" class="absolute top-5 right-5 p-2 rounded-full bg-cozinha-bg text-cozinha-brown hover:bg-cozinha-terracota hover:text-white transition-colors">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <span class="text-xs font-bold text-cozinha-terracota uppercase tracking-widest block mb-1">Receita Detalhada</span>
+        <h3 id="modalTitle" class="font-serif font-bold text-2xl sm:text-3xl text-cozinha-brown mb-4">Nome da Receita</h3>
+
+        <div class="space-y-6">
+            <div>
+                <h4 class="font-bold text-sm text-cozinha-brown mb-2 flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-cozinha-terracota"></i> Ingredientes
+                </h4>
+                <ul class="list-disc list-inside text-xs text-cozinha-lightBrown space-y-1.5 bg-cozinha-bg p-4 rounded-xl border border-cozinha-creamBorder">
+                    <li>3 ovos em temperatura ambiente</li>
+                    <li>2 xícaras (chá) de farinha de trigo peneirada</li>
+                    <li>1 xícara (chá) de açúcar cristal ou refinado</li>
+                    <li>1 colher (sopa) de fermento químico em pó</li>
+                    <li>Ingredientes frescos selecionados com carinho</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-sm text-cozinha-brown mb-2 flex items-center gap-2">
+                    <i data-lucide="flame" class="w-4 h-4 text-cozinha-terracota"></i> Modo de Preparo
+                </h4>
+                <ol class="list-decimal list-inside text-xs text-cozinha-lightBrown space-y-2 leading-relaxed">
+                    <li>Preaqueça o forno a 180°C e unte uma forma com manteiga e farinha.</li>
+                    <li>No liquidificador ou tigela, bata os ingredientes líquidos até obter uma mistura homogênea.</li>
+                    <li>Adicione os secos peneirados aos poucos, misturando delicadamente com um fouet.</li>
+                    <li>Despeje na forma e asse por aproximadamente 35 a 40 minutos até dourar.</li>
+                </ol>
+            </div>
+
+            <div class="pt-4 border-t border-cozinha-creamBorder flex justify-end">
+                <button onclick="closeRecipeModal()" class="px-6 py-2.5 rounded-xl bg-cozinha-terracota text-white font-bold text-xs uppercase tracking-wider hover:bg-cozinha-terracotaHover transition-all">
+                    Fechar Receita
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT DE INTERATIVIDADE -->
 <script>
     // Inicializar Lucide Icons
     lucide.createIcons();
 
-    // Mobile Menu Toggle Logic
+    // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -739,38 +732,127 @@
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Alternate Tabs for Matchday / Results Sidebar
-    function switchMatchTab(tab) {
-        const btnResults = document.getElementById('tabResults');
-        const btnNext = document.getElementById('tabNext');
-        const contentResults = document.getElementById('contentResults');
-        const contentNext = document.getElementById('contentNext');
-
-        if (tab === 'results') {
-            btnResults.className = 'flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-ucl-cyan text-slate-950 transition-all';
-            btnNext.className = 'flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-slate-800 text-slate-400 hover:text-white transition-all';
-            contentResults.classList.remove('hidden');
-            contentNext.classList.add('hidden');
+    // Toggle Favorite / Bookmark Heart
+    function toggleBookmark(button) {
+        const icon = button.querySelector('i');
+        if (button.classList.contains('text-red-500')) {
+            button.classList.remove('text-red-500');
+            button.classList.add('text-cozinha-lightBrown');
+            icon.setAttribute('fill', 'none');
         } else {
-            btnNext.className = 'flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-ucl-cyan text-slate-950 transition-all';
-            btnResults.className = 'flex-1 py-2 text-center font-bold text-xs uppercase tracking-wider rounded-lg bg-slate-800 text-slate-400 hover:text-white transition-all';
-            contentNext.classList.remove('hidden');
-            contentResults.classList.add('hidden');
+            button.classList.remove('text-cozinha-lightBrown');
+            button.classList.add('text-red-500');
+            icon.setAttribute('fill', 'currentColor');
         }
     }
 
-    // Handle Newsletter Subscription
+    // Filter Recipes by Category Pill
+    function filterCategory(category) {
+        const cards = document.querySelectorAll('.recipe-card');
+        const buttons = document.querySelectorAll('.cat-btn');
+        let visibleCount = 0;
+
+        // Update Active Button Style
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-cozinha-terracota', 'text-white');
+            btn.classList.add('bg-white', 'text-cozinha-brown');
+        });
+
+        event.currentTarget.classList.remove('bg-white', 'text-cozinha-brown');
+        event.currentTarget.classList.add('bg-cozinha-terracota', 'text-white');
+
+        // Filter Cards
+        cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'todas' || cardCat === category) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        updateRecipeCount(visibleCount);
+    }
+
+    // Filter Recipes by Search Input
+    function filterRecipes() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.recipe-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name').toLowerCase();
+            if (name.includes(query)) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        updateRecipeCount(visibleCount);
+    }
+
+    function syncMobileSearch(val) {
+        document.getElementById('searchInput').value = val;
+        filterRecipes();
+    }
+
+    // Filter Recipes by Max Prep Time
+    function filterByTime(maxTime) {
+        const cards = document.querySelectorAll('.recipe-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const time = parseInt(card.getAttribute('data-time'));
+            if (time <= maxTime) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        updateRecipeCount(visibleCount);
+    }
+
+    // Helper: Update visible count badge & empty state
+    function updateRecipeCount(count) {
+        const badge = document.getElementById('recipeCount');
+        const noResults = document.getElementById('noResults');
+
+        badge.innerText = `Mostrando ${count} receita${count === 1 ? '' : 's'}`;
+
+        if (count === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+        }
+    }
+
+    // Handle Newsletter Form
     function handleSubscribe(event) {
         event.preventDefault();
-        const alertBox = document.getElementById('subscribeAlert');
+        const successMsg = document.getElementById('subscribeSuccess');
         const form = document.getElementById('newsletterForm');
 
-        alertBox.classList.remove('hidden');
+        successMsg.classList.remove('hidden');
         form.reset();
 
         setTimeout(() => {
-            alertBox.classList.add('hidden');
+            successMsg.classList.add('hidden');
         }, 5000);
+    }
+
+    // Modal de Receita
+    function openRecipeModal(title) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('recipeModal').classList.remove('hidden');
+    }
+
+    function closeRecipeModal() {
+        document.getElementById('recipeModal').classList.add('hidden');
     }
 </script>
 </body>
